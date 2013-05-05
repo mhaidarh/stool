@@ -1,0 +1,185 @@
+Stool
+=====
+
+Stool | Some simple student applications
+
+Description
+-----------
+
+Stool is some simple student applications that created with various concept. The main interface is using CLI and takes argument input from the user via terminal. This method allows the program to adapt with other built-in Unix-like programs. The project contains some basic programs.
+
+Stubase is the base program for extended feature of file system access which enables saving the database and capability for saving scores. Stulink is the postprocessor version of Stubase. Stulink uses doubly linked list concept to store the data. The combination of both is still under development, so it only leaves for review and will be continued if required.
+
+Notes:
+
+- Assumed the user is using Unix-like OS and can operate terminal.
+- Please go to this working project directory first.
+- The text after the sign `$` is the command you need to execute.
+- Advance debugging requires valgrind tool to be installed.
+
+
+*  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *
+
+
+Stulink
+=======
+
+Usage
+-----
+
+### Compiling
+
+```
+$ make
+gcc -std=c99 -pedantic -Wall -Werror -O2 -c list.c
+gcc -std=c99 -pedantic -Wall -Werror -O2 -c main.c
+gcc -std=c99 -pedantic -Wall -Werror -O2 main.o list.o -o stulink
+```
+
+### Using Example
+
+Note: Currently only using test to run the program
+```
+$ ./stulink
+Stulink Tests
+...
+Stulink Tests End
+```
+
+### Debugging Example
+
+```
+$ valgrind --leak-check=full ./stulink
+==23074== Memcheck, a memory error detector
+...
+==23074== ERROR SUMMARY: ...
+```
+
+*  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *
+
+
+Stubase
+=======
+
+Usage
+-----
+
+### Compiling
+
+```
+$ make
+make stubase
+gcc -Wall -g   -c -o stubase.o stubase.c
+gcc   stubase.o   -o stubase
+```
+
+### Using Example
+
+* Help:
+```
+$ ./stubase student.db h
+```
+
+* Create database:
+```
+$ ./stubase student.db c
+```
+
+* Insert data into database:
+```
+$ ./stubase student.db i 0 10101010 Hazero 90.1
+$ ./stubase student.db i 5 54411850 "Haidar Hanif" 92.8
+$ ./stubase student.db i 3 50811445 "Hedaru Henifu" 25
+```
+Note: If has first and last name, wrap it with quotation marks.
+
+* Delete data from database:
+```
+$ ./stubase student.db d 0
+```
+
+* Print data:
+```
+$ ./stubase student.db p
+ID  NPM       Name           Scores
+0   10101010  Hazero         90.1
+1
+2
+3   50811445  Hedaru Henifu  25
+4
+5   54411850  Haidar Hanif   92.8
+6
+7
+8
+9
+```
+
+Get data:
+```
+$ ./stubase student.db g 5
+5   54411850  Haidar Hanif   92.8
+```
+
+### Debugging Example
+
+```
+$ valgrind --leak-check=full ./stubase student.db g 0
+==25509== Memcheck, a memory error detector
+...
+==25509== ERROR SUMMARY: ...
+```
+
+
+*  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *
+
+
+Schema
+------
+
+Concept prerequisites:
+
+- Algorithms
+- C programming language
+- Data type
+- Struct
+- Class
+- Header
+- Pointer
+- Argument parameter
+- Memory allocation
+- File system access
+- Debug
+- Single linked list
+- Double linked list
+
+Required data:
+
+- NPM (Index)
+- First name
+- Last name
+- Score
+
+Available action:
+
+- Create
+- Insert/Add/Push
+- Delete/Remove/Pop
+- Get/Search/Traverse
+- Get condition
+- Print
+
+
+*  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *
+
+
+Credits
+=======
+
+- The most initial base program is created and inspired by
+   - [Zed Shaw](http://zedshaw.com)
+   - [Alan Skorkin](http://skorks.com)
+   - [Tomer Elmalem](http://tomelm.com)
+   - Various education institution.
+- The real adaptation is done by [M Haidar Hanif](https://twitter.com/mhaidarh).
+- The project is licensed under [MIT License](/LICENSE).
+
